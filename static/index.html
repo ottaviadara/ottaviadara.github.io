@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ottavia Dara Collection</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Playfair Display', Georgia, serif;
+            background-color: #fafaf9;
+            color: #292524;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+            background-color: black;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.7);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.3), rgba(0,0,0,0.6));
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 300;
+            letter-spacing: 0.3em;
+            margin-bottom: 1rem;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        .hero p {
+            font-size: clamp(1.2rem, 2vw, 1.5rem);
+            font-weight: 300;
+            letter-spacing: 0.2em;
+            opacity: 0.9;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator-inner {
+            width: 24px;
+            height: 40px;
+            border: 2px solid rgba(255,255,255,0.6);
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            padding-top: 8px;
+        }
+
+        .scroll-dot {
+            width: 4px;
+            height: 12px;
+            background: rgba(255,255,255,0.6);
+            border-radius: 2px;
+            animation: pulse 2s infinite;
+        }
+
+        /* Collection Banner */
+        .collection-banner {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .collection-banner img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.5);
+        }
+
+        .collection-banner-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            color: white;
+            padding: 2rem;
+            max-width: 56rem;
+        }
+
+        .collection-banner h2 {
+            font-size: clamp(2.5rem, 7vw, 4.5rem);
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.15em;
+        }
+
+        .collection-banner p {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            margin-bottom: 2rem;
+            font-weight: 300;
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+
+        .btn {
+            padding: 1rem 3rem;
+            border: 2px solid white;
+            color: white;
+            background: transparent;
+            font-size: 1.125rem;
+            letter-spacing: 0.15em;
+            font-weight: 300;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+
+        .btn:hover {
+            background: white;
+            color: #292524;
+        }
+
+        /* Content Sections */
+        .section {
+            padding: 8rem 2rem;
+        }
+
+        .section-white {
+            background: white;
+        }
+
+        .section-gray {
+            background: #e7e5e4;
+        }
+
+        .section-dark {
+            background: #292524;
+            color: white;
+        }
+
+        .section-content {
+            max-width: 64rem;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .section h3 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 300;
+            margin-bottom: 2rem;
+            letter-spacing: 0.1em;
+        }
+
+        .section p {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            line-height: 1.8;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            color: #57534e;
+        }
+
+        .section-white p {
+            color: #57534e;
+        }
+
+        .section-dark p {
+            color: rgba(255,255,255,0.9);
+        }
+
+        /* Philosophy Section */
+        .philosophy-section {
+            /* padding: 0 2rem; */
+            background: #e7e5e4;
+        }
+
+        .philosophy-content {
+            /* max-width: 80rem; */
+            /* margin: 0 auto; */
+            display: grid;
+            grid-template-columns: 1fr;
+            /* gap: 4rem; */
+            align-items: center;
+        }
+
+        @media (min-width: 768px) {
+            .philosophy-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .philosophy-image img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+            /* box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); */
+        }
+        
+        .philosophy-text {
+            padding: 10rem 2rem;
+            max-height: 580px;
+        }
+
+        .philosophy-text h3 {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.1em;
+        }
+
+        .philosophy-text p {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: #57534e;
+            font-weight: 300;
+            margin-bottom: 1rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            50% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <video class="hero-video" autoplay loop muted playsinline>
+            <source src="/static/videos/outsideTheCottage.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>OTTAVIA DARA</h1>
+            <p>COLLECTION</p>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-indicator-inner">
+                <div class="scroll-dot"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collection Banner -->
+    <section class="collection-banner">
+        <img src="/static/images/outsideTheCottage/sample.jpg" alt="Outside the Cottage">
+        <div class="collection-banner-content">
+            <h2>Outside the Cottage</h2>
+            <p>Where countryside elegance meets timeless sophistication</p>
+            <a href="/static/collections/outside-the-cottage.html" class="btn">EXPLORE COLLECTION</a>
+        </div>
+    </section>
+
+    <!-- Vision Section -->
+    <section class="section section-white">
+        <div class="section-content">
+            <h3>Our Vision</h3>
+            <p>Ottavia Dara Collection celebrates the beauty of slow living and the artistry of thoughtful design. Each piece is crafted to transcend seasons, embodying the spirit of pastoral elegance and refined simplicity.</p>
+            <p>We believe in garments that tell stories, in fabrics that breathe with nature, and in silhouettes that honor both tradition and modernity.</p>
+        </div>
+    </section>
+
+    <!-- Philosophy Section -->
+    <section class="philosophy-section">
+        <div class="philosophy-content">
+            <div class="philosophy-image">
+                <img src="/static/images/outsideTheCottage/sample_2.jpg" alt="Craftsmanship">
+            </div>
+            <div class="philosophy-text">
+                <h3>Crafted with Care</h3>
+                <p>Every stitch, every button, every fold carries intention. Our atelier combines traditional techniques with contemporary sensibilities, creating pieces that exist at the intersection of comfort and couture.</p>
+                <p>From the rolling hills of the countryside to your wardrobe, we bring you clothing that feels like home.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer CTA -->
+    <section class="section section-dark">
+        <div class="section-content">
+            <h3>Begin Your Journey</h3>
+            <p>Discover the Outside the Cottage collection</p>
+            <a href="/static/collections/outside-the-cottage.html" class="btn">VIEW COLLECTION</a>
+        </div>
+    </section>
+</body>
+</html>

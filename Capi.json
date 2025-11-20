@@ -1,0 +1,93 @@
+{
+    "collections" : [
+        {
+            "id" : "outsideTheCottage",
+            "name" : "Outside the Cottage",
+            "description" : ""
+        }
+    ],
+    "items": [
+        {
+            "id" : "burfordBlazer",
+            "name" : "Burford Blazer",
+            "description" : "Giacca doppiopetto dal taglio maschile, collo a rever classico, chiusura con 4 bottoni corno e 2 automatici interni, tasche inserite nelle cuciture verticali, spacchetto posteriore, interamente foderata, fantasia a spina di pesce.",
+            "price" : 225.0,
+            "mainComposition" : [
+                "50% wool", 
+                "40% polyester", 
+                "10% other fibers"
+            ],
+            "secondaryComposition" : {
+                "lining" : [
+                    "100% viscose"
+                ]
+            }
+        },
+        {
+            "id" : "ebringtonBlouse",
+            "nome" : "Ebrington Blouse",
+            "description": "Blusa in twill color avorio di linea diritta e morbida, leggermente trasparente, colletto con coulisse e nastrino da annodare, pieghe sottili che contornano l’apertura frontale e arricchiscono lo sprone posteriore, maniche ampie con elastico e arricciatura ai polsi.",
+            "price": 125.0,
+            "mainComposition" : [
+                "100% wool"
+            ],
+            "secondaryComposition" : {}
+        },
+        {
+            "id" : "clovellySkirt",
+            "nome" : "Clovelly Skirt",
+            "description" : "Gonna a pieghe piatte stile college, cinturino basso, chiusura con zip sul centro dietro, fantasia micro pied de poul sui toni del marrone.",
+            "price" : 75.0,
+            "mainComposition" : [
+                "88% cotton", 
+                "12% polyester"
+            ],
+            "secondaryComposition" : {}
+        },
+        {
+            "id" : "kilnseyDress",
+            "nome" : "Kilnsey Dress",
+            "description" : "Abito lunghezza midi in fantasia tartan, scollo a V, corpino mosso da leggere arricciature, fascia sagomata in vita, maniche a sbuffo con arricciatura chiusa da polsini a 3 bottoni, cerniera sul dietro, gonna a teli foderata, profondo spacco davanti.",
+            "price" : 215.0,
+            "mainComposition" : [
+                "100% wool"
+            ],
+            "secondaryComposition" : {
+                "lining" : [
+                    "100% viscose"
+                ]
+            }
+        },
+        {
+            "id" : "grassingtonBelt",
+            "nome" : "Grassington Belt",
+            "description" : "Cintura con fianchetto, pinces davanti e dietro, tasca laterale inserita nella cucitura, tasca a filetto sul davanti con passante per anellino n nichel, passanti per cintura sul fianco e dietro, chiusura con 2 anelli a D in nichel, interamente foderata.",
+            "price" : 65.0,
+            "mainComposition" : [
+                "50% wool", 
+                "40% polyester", 
+                "10% other fibers"
+            ],
+            "secondaryComposition" : {
+                "lining" : [
+                    "100% viscose"
+                ]
+            }
+        },
+        {
+            "id" : "stantonCape",
+            "nome" : "Stanton Cape",
+            "description" : "Mantella in twill verde kaki, stile trench, chiusura doppiopetto con 8 bottoni corno più uno interno, aperture per braccia profilate, cintura in vita removibile con passanti profilati, colletto a contrasto in fantasia pied de poul, sprone posteriore e sul davanti destro fermato da bottoni corno, piega con sfondo piega nel centro dietro.",
+            "price" : 185.0,
+            "mainComposition" : [
+                "100% cotton"
+            ],
+            "secondaryComposition" : {
+                "collar" : [
+                    "88% cotton", 
+                    "12% polyester"
+                ]
+            }
+        }
+    ]
+}
