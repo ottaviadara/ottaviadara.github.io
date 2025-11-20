@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kilnsey Dress - Ottavia Dara Collection</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Playfair Display', Georgia, serif;
+            background-color: #fafaf9;
+            color: #292524;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            z-index: 20;
+            color: #292524;
+            text-decoration: none;
+            font-size: 0.875rem;
+            letter-spacing: 0.2em;
+            transition: opacity 0.3s;
+            background: rgba(255,255,255,0.9);
+            padding: 0.75rem 1.5rem;
+        }
+
+        .back-button:hover {
+            opacity: 0.7;
+        }
+
+        .item-container {
+            max-width: 90rem;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .item-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        @media (min-width: 1024px) {
+            .item-layout {
+                grid-template-columns: 1fr 1fr;
+                gap: 4rem;
+            }
+        }
+
+        .image-gallery {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .main-image {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-details {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .item-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 300;
+            letter-spacing: 0.15em;
+            margin-bottom: 1rem;
+        }
+
+        .item-price {
+            font-size: 1.5rem;
+            color: #57534e;
+            margin-bottom: 2rem;
+        }
+
+        .item-description {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: #44403c;
+            font-weight: 300;
+        }
+
+        .composition-section {
+            border-top: 1px solid #d6d3d1;
+            padding-top: 2rem;
+        }
+
+        .composition-title {
+            font-size: 1.25rem;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        .composition-list {
+            list-style: none;
+            font-size: 1rem;
+            color: #57534e;
+            line-height: 1.8;
+        }
+
+        .composition-list li {
+            margin-bottom: 0.5rem;
+        }
+
+        .composition-subtitle {
+            font-style: italic;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-button {
+            display: inline-block;
+            background: #292524;
+            color: white;
+            padding: 1rem 3rem;
+            text-decoration: none;
+            letter-spacing: 0.15em;
+            font-size: 0.875rem;
+            transition: all 0.3s;
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .contact-button:hover {
+            background: #44403c;
+        }
+    </style>
+</head>
+<body>
+    <a href="/ottaviadaracollection/static/collections/outside-the-cottage.html" class="back-button">← BACK TO COLLECTION</a>
+
+    <div class="item-container">
+        <div class="item-layout">
+            <div class="image-gallery">
+                <img class="main-image" src="/ottaviadaracollection/static/images/kilnseyDress/MG_30.jpg" alt="Kilnsey Dress">
+            </div>
+
+            <div class="item-details">
+                <div>
+                    <h1 class="item-title">KILNSEY DRESS</h1>
+                    <p class="item-price">€215.00</p>
+                </div>
+
+                <p class="item-description">
+                    Abito lunghezza midi in fantasia tartan, scollo a V, corpino mosso da leggere arricciature, fascia sagomata in vita, maniche a sbuffo con arricciatura chiusa da polsini a 3 bottoni, cerniera sul dietro, gonna a teli foderata, profondo spacco davanti.
+                </p>
+
+                <div class="composition-section">
+                    <h3 class="composition-title">COMPOSITION</h3>
+                    <ul class="composition-list">
+                        <li>100% wool</li>
+                    </ul>
+                    <p class="composition-subtitle">Lining:</p>
+                    <ul class="composition-list">
+                        <li>100% viscose</li>
+                    </ul>
+                </div>
+
+                <a href="mailto:info@ottaviadara.com" class="contact-button">INQUIRE ABOUT THIS ITEM</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
