@@ -97,14 +97,14 @@
 
         @media (min-width: 1024px) {
             .items-grid {
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
         .item-card {
-            background: white;
+            /* background: white; */
             overflow: hidden;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            /* box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); */
             cursor: pointer;
             transition: all 0.5s ease;
             text-decoration: none;
@@ -112,13 +112,13 @@
             display: block;
         }
 
-        .item-card:hover {
+        /* .item-card:hover {
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-        }
+        } */
 
         .item-image-container {
             position: relative;
-            height: 24rem;
+            height: 60rem;
             overflow: hidden;
         }
 
@@ -139,13 +139,13 @@
             transition: transform 0.7s ease;
         }
 
-        .item-card:hover .item-image {
+        /* .item-card:hover .item-image {
             transform: scale(1.1);
         }
 
         .item-card:hover #belt-image {
             transform: scale(1.1) translate(-45%, -45%);
-        }
+        } */
 
         .item-overlay {
             position: absolute;
@@ -154,19 +154,20 @@
             transition: background 0.5s ease;
         }
 
-        .item-card:hover .item-overlay {
+        /* .item-card:hover .item-overlay {
             background: rgba(0,0,0,0.2);
-        }
+        } */
 
         .item-info {
-            padding: 1.5rem;
-            text-align: center;
+            padding: 1.5rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
 
         .item-name {
             font-size: 1.5rem;
             font-weight: 300;
-            margin-bottom: 0.5rem;
             letter-spacing: 0.1em;
             color: #292524;
         }
@@ -176,52 +177,122 @@
             color: #57534e;
         }
 
-        /* Contact Section */
-        .contact-section {
-            padding: 5rem 2rem;
-            background: white;
-        }
-
-        .contact-content {
-            max-width: 64rem;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .contact-content h3 {
-            font-size: clamp(2rem, 4vw, 2.5rem);
-            font-weight: 300;
-            margin-bottom: 2rem;
-            letter-spacing: 0.1em;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            color: #57534e;
+        /* Contact Footer */
+        .contact-footer {
+            background: #1c1917;
+            color: white;
+            padding: 2rem 1.5rem 2rem;
         }
 
         @media (min-width: 768px) {
-            .contact-info {
-                flex-direction: row;
-                justify-content: center;
-                gap: 2rem;
+            .contact-footer {
+                padding: 2rem 2rem 2rem;
             }
         }
 
-        .contact-item {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.75rem;
-            font-weight: 300;
+        .footer-header {
+            max-width: 80rem;
+            margin: 0 auto;
+            /* display: block; */
+            text-align: center;
+            margin-bottom: 3rem;
         }
 
-        .contact-icon {
-            width: 1.25rem;
-            height: 1.25rem;
+        .footer-header h3 {
+            font-size: 1rem;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            margin-bottom: 1.5rem;
+            color: white;
         }
+
+        .footer-content {
+            max-width: 80rem;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        @media (min-width: 768px) {
+            .footer-content {
+                grid-template-columns: repeat(3, 1fr);
+                text-align: left;
+            }
+            /* .footer-header {
+                text-align: left;
+            } */
+        }
+
+        .footer-section {
+            text-align: center;
+        }
+
+        .footer-section h4 {
+            font-size: 1.25rem;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .footer-section p {
+            font-size: 1rem;
+            font-weight: 300;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @media (min-width: 768px) {
+            .social-links {
+                flex-direction: row;
+                gap: 1.5rem;
+                align-items: flex-start;
+            }
+        }
+
+        .social-links a {
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-bottom {
+            max-width: 80rem;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            font-size: 0.875rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.6);
+            letter-spacing: 0.05em;
+        }   
+
     </style>
 </head>
 <body>
@@ -245,8 +316,8 @@
                     <div class="item-overlay"></div>
                 </div>
                 <div class="item-info">
-                    <h3 class="item-name">Burford Blazer</h3>
-                    <p class="item-price">€225.00</p>
+                    <div class="item-name">Burford Blazer</div>
+                    <div class="item-price">€225.00</div>
                 </div>
             </a>
 
@@ -312,32 +383,33 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="contact-section">
-        <div class="contact-content">
-            <h3>For Inquiries</h3>
-            <div class="contact-info">
-                <div class="contact-item">
-                    <svg class="contact-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                    </svg>
-                    <span>info@ottaviadara.com</span>
-                </div>
-                <div class="contact-item">
-                    <svg class="contact-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
-                    </svg>
-                    <span>+39 346 970 5199</span>
-                </div>
-                <div class="contact-item">
-                    <svg class="contact-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                    </svg>
-                    <span>Venice, Italy</span>
+    <!-- Contact Footer -->
+    <footer class="contact-footer">
+        <div class="footer-header">
+            <h3>Per ordini e ulteriori informazioni contattami a:</h3>
+        </div>
+
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Contatti</h4>
+                <p><a href="mailto:ottaviadara@gmail.com">ottaviadara@gmail.com</a></p>
+                <p><a href="tel:+393401234567">+39 046 970 5199</a></p>
+            </div>
+            <div class="footer-section">
+                <h4>Socials</h4>
+                <div class="social-links">
+                    <a href="https://instagram.com/ottaviadaracollection" target="_blank" rel="noopener">Instagram</a>
+                    <a href="https://pinterest.com/ottaviadara" target="_blank" rel="noopener">Pinterest</a>
                 </div>
             </div>
+            <div class="footer-section">
+                <h4>Lab</h4>
+                <p>Treviso, Italia</p>
+            </div>
         </div>
-    </section>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Ottavia Dara Collection. Tutti i diritti riservati.</p>
+        </div>
+    </footer>
 </body>
 </html>
