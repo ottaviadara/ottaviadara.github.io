@@ -122,7 +122,7 @@
             text-align: center;
             color: white;
             padding: 2rem;
-            max-width: 56rem;
+            max-width: 70rem;
         }
 
         .collection-banner h2 {
@@ -130,6 +130,13 @@
             font-weight: 300;
             margin-bottom: 1.5rem;
             letter-spacing: 0.15em;
+        }
+
+        .collection-banner h3 {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 300;
+            margin-bottom: 1rem;
+            letter-spacing: 0.1em;
         }
 
         .collection-banner p {
@@ -205,20 +212,17 @@
 
         .section-dark p {
             color: rgba(255,255,255,0.9);
+            margin-bottom: 1rem;
         }
 
         /* Philosophy Section */
         .philosophy-section {
-            /* padding: 0 2rem; */
             background: #e7e5e4;
         }
 
         .philosophy-content {
-            /* max-width: 80rem; */
-            /* margin: 0 auto; */
             display: grid;
             grid-template-columns: 1fr;
-            /* gap: 4rem; */
             align-items: center;
         }
 
@@ -232,11 +236,11 @@
             width: 100%;
             height: 600px;
             object-fit: cover;
-            /* box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); */
+            display: block;
         }
         
         .philosophy-text {
-            padding: 10rem 2rem;
+            padding: 4rem 4rem;
             max-height: 580px;
         }
 
@@ -253,6 +257,84 @@
             color: #57534e;
             font-weight: 300;
             margin-bottom: 1rem;
+        }
+
+        /* Contact Footer */
+        .contact-footer {
+            background: #1c1917;
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 80rem;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        @media (min-width: 768px) {
+            .footer-content {
+                grid-template-columns: repeat(3, 1fr);
+                text-align: left;
+            }
+        }
+
+        .footer-section h4 {
+            font-size: 1.25rem;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .footer-section p {
+            font-size: 1rem;
+            font-weight: 300;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        @media (min-width: 768px) {
+            .social-links {
+                flex-direction: row;
+                gap: 1.5rem;
+            }
+        }
+
+        .footer-bottom {
+            max-width: 80rem;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            font-size: 0.875rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.6);
+            letter-spacing: 0.05em;
         }
 
         /* Animations */
@@ -304,22 +386,30 @@
         </div>
     </section>
 
-    <!-- Collection Banner -->
-    <section class="collection-banner">
-        <img src="/ottaviadaracollection/static/images/outsideTheCottage/sample.jpg" alt="Outside the Cottage">
-        <div class="collection-banner-content">
-            <h2>Outside the Cottage</h2>
-            <p>Where countryside elegance meets timeless sophistication</p>
-            <a href="/ottaviadaracollection/static/collections/outside-the-cottage.html" class="btn">EXPLORE COLLECTION</a>
-        </div>
-    </section>
-
     <!-- Vision Section -->
     <section class="section section-white">
         <div class="section-content">
-            <h3>Our Vision</h3>
-            <p>Ottavia Dara Collection celebrates the beauty of slow living and the artistry of thoughtful design. Each piece is crafted to transcend seasons, embodying the spirit of pastoral elegance and refined simplicity.</p>
-            <p>We believe in garments that tell stories, in fabrics that breathe with nature, and in silhouettes that honor both tradition and modernity.</p>
+            <h3>Riscopri il valore della lentezza.</h3>
+            <p>La perfezione non è di serie, ma è l'espressione più autentica della tua unicità e della mia dedizione.</p>
+        </div>
+    </section>
+
+    <!-- Collection Banner -->
+    <section class="collection-banner">
+        <img src="/ottaviadaracollection/static/images/outsideTheCottage/fall-winter-background.jpg" alt="Outside the Cottage">
+        <div class="collection-banner-content">
+            <h3>Fall/Winter Collection 2025/26</h3>
+            <h2>Outside the Cottage</h2>
+            <a href="/ottaviadaracollection/static/collections/outside-the-cottage.html" class="btn">Scopri ora</a>
+        </div>
+    </section>
+
+    <!-- More About Me Section -->
+    <section class="section section-white">
+        <div class="section-content">
+            <h3>Crafted with Care</h3>
+            <p>Every stitch, every button, every fold carries intention. Our atelier combines traditional techniques with contemporary sensibilities, creating pieces that exist at the intersection of comfort and couture.</p>
+            <p>From the rolling hills of the countryside to your wardrobe, we bring you clothing that feels like home.</p>
         </div>
     </section>
 
@@ -330,9 +420,23 @@
                 <img src="/ottaviadaracollection/static/images/outsideTheCottage/sample_2.jpg" alt="Craftsmanship">
             </div>
             <div class="philosophy-text">
-                <h3>Crafted with Care</h3>
-                <p>Every stitch, every button, every fold carries intention. Our atelier combines traditional techniques with contemporary sensibilities, creating pieces that exist at the intersection of comfort and couture.</p>
-                <p>From the rolling hills of the countryside to your wardrobe, we bring you clothing that feels like home.</p>
+                <h3>More about me</h3>
+                <p>Sono Ottavia, una ragazza di 25 anni che ha voluto mettersi in gioco e provare a realizzare un suo piccolo sogno. La passione per il cucito nasce molti anni fa, quando nel 2014 ho preso in mano la mia prima macchina da cucire, che ancora oggi mi accompagna.</p>
+                <p>Sono principalmente un'autodidatta, perciò il mio bagaglio di esperienze è frutto di tanti errori e passi falsi, i quali mi hanno portata piano piano ad imparare questo mestiere e ad appassionarmene. La strada è ancora lunga, ma se vorrai farmi compagnia in questo viaggio te ne sarò immensamente grata.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sustainability Section -->
+    <section class="philosophy-section">
+        <div class="philosophy-content">
+            <div class="philosophy-text">
+                <h3>Sostenibilità e Personalizzazione</h3>
+                <p>Ogni capo è interamente realizzato da me utilizzando stoffe di fine produzione delle grandi aziende di moda. Le stoffe di fine produzione, o deadstock, sono quei tessuti che per errori di produzione, ordini cancellati, sovrapproduzione ecc diventano giacenze di magazzino, destinate all'eliminazione. Riuscire perciò a riciclarli e dare loro una nuova vita ha una grande importanza a livello di impatto ambientale.</p>
+                <p>Ogni capo è disponibile con modalità made to order, ovvero viene confezionato solo dopo aver ricevuto un ordine specifico da un cliente. Questo permette di personalizzare il capo nella taglia desiderata e in altri suoi dettagli, così da ridurre gli sprechi e l'invenduto.</p>
+            </div>
+            <div class="philosophy-image">
+                <img src="/ottaviadaracollection/static/images/outsideTheCottage/sample.jpg" alt="Sewing Process">
             </div>
         </div>
     </section>
@@ -340,10 +444,37 @@
     <!-- Footer CTA -->
     <section class="section section-dark">
         <div class="section-content">
-            <h3>Begin Your Journey</h3>
-            <p>Discover the Outside the Cottage collection</p>
+            <p>Scopri ora</p>
+            <h3>Outside the Cottage</h3>
             <a href="/ottaviadaracollection/static/collections/outside-the-cottage.html" class="btn">VIEW COLLECTION</a>
         </div>
     </section>
+
+    <!-- Contact Footer -->
+    <footer class="contact-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Contatti</h4>
+                <p><a href="mailto:info@ottaviadara.com">info@ottaviadara.com</a></p>
+                <p><a href="tel:+393401234567">+39 340 123 4567</a></p>
+            </div>
+            <div class="footer-section">
+                <h4>Seguimi</h4>
+                <div class="social-links">
+                    <a href="https://instagram.com/ottaviadara" target="_blank" rel="noopener">Instagram</a>
+                    <a href="https://facebook.com/ottaviadara" target="_blank" rel="noopener">Facebook</a>
+                    <a href="https://pinterest.com/ottaviadara" target="_blank" rel="noopener">Pinterest</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Studio</h4>
+                <p>Torino, Italia</p>
+                <p>Su appuntamento</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Ottavia Dara Collection. Tutti i diritti riservati.</p>
+        </div>
+    </footer>
 </body>
 </html>
