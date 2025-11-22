@@ -4,7 +4,7 @@ from fastapi.responses import StreamingResponse, HTMLResponse, FileResponse
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 app = FastAPI()
-app.mount("/ottaviadaracollection/static", StaticFiles(directory="./static"), name="static")
+app.mount("/static", StaticFiles(directory="./static"), name="static")
 
 @app.get("/")
 async def read_root():
