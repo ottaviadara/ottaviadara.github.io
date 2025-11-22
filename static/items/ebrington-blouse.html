@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ebrington Blouse - Ottavia Dara Collection</title>
+    <title>Ebrington Blouse - Ottavia Dara Collections</title>
     <style>
         * {
             margin: 0;
@@ -11,158 +11,774 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Playfair Display', Georgia, serif;
             background-color: #fafaf9;
             color: #292524;
+            overflow-x: hidden;
         }
 
-        .back-button {
+        /* Navigation */
+        .nav {
             position: fixed;
-            top: 2rem;
-            left: 2rem;
-            z-index: 20;
-            color: #292524;
-            text-decoration: none;
-            font-size: 0.875rem;
-            letter-spacing: 0.2em;
-            transition: opacity 0.3s;
-            background: rgba(255,255,255,0.9);
-            padding: 0.75rem 1.5rem;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1rem 1.5rem;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
 
-        .back-button:hover {
-            opacity: 0.7;
-        }
-
-        .item-container {
-            max-width: 90rem;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
-
-        .item-layout {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 3rem;
-            margin-top: 2rem;
-        }
-
-        @media (min-width: 1024px) {
-            .item-layout {
-                grid-template-columns: 1fr 1fr;
-                gap: 4rem;
+        @media (min-width: 768px) {
+            .nav {
+                padding: 1.5rem 2rem;
             }
         }
 
-        .image-gallery {
+        .back-link {
+            color: #292524;
+            text-decoration: none;
+            font-size: 0.8rem;
+            letter-spacing: 0.12em;
+            transition: opacity 0.3s;
+            display: inline-flex;
+            align-items: center;
+            min-height: 44px;
+        }
+
+        @media (min-width: 768px) {
+            .back-link {
+                font-size: 0.875rem;
+                letter-spacing: 0.15em;
+            }
+        }
+
+        .back-link:hover {
+            opacity: 0.6;
+        }
+
+        /* Item Detail */
+        .item-detail {
+            max-width: 90rem;
+            margin: 0 auto;
+            padding: 5rem 1rem 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .item-detail {
+                padding: 6rem 2rem 3rem;
+            }
+        }
+
+        .item-content {
             display: grid;
-            gap: 1rem;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        @media (min-width: 1024px) {
+            .item-content {
+                grid-template-columns: 1.2fr 0.8fr;
+                gap: 4rem;
+                align-items: start;
+            }
+        }
+
+        /* Image Gallery */
+        .gallery {
+            position: relative;
+            height: fit-content;
+        }
+
+        @media (min-width: 1024px) {
+            .gallery {
+                position: sticky;
+                top: 6rem;
+            }
+        }
+
+        .main-image-container {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            background: white;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            border-radius: 4px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+
+        @media (min-width: 768px) {
+            .main-image-container {
+                height: 650px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .main-image-container {
+                height: 750px;
+            }
         }
 
         .main-image {
             width: 100%;
-            height: auto;
+            height: 100%;
             object-fit: cover;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transition: transform 0.1s ease-out;
         }
 
-        .item-details {
+        @media (min-width: 1024px) {
+            .main-image.zoom-enabled {
+                transform-origin: center center;
+            }
+        }
+
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
             display: flex;
-            flex-direction: column;
-            gap: 2rem;
+            justify-content: space-between;
+            padding: 0 0.5rem;
+            z-index: 10;
+            transition: opacity 0.3s;
         }
 
-        .item-title {
+        @media (min-width: 768px) {
+            .gallery-nav {
+                padding: 0 1rem;
+            }
+        }
+
+        .main-image-container:hover .gallery-nav {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        @media (max-width: 1023px) {
+            .main-image-container:hover .gallery-nav {
+                opacity: 1;
+                pointer-events: auto;
+            }
+        }
+
+        .gallery-btn {
+            background: rgba(255, 255, 255, 0.95);
+            border: none;
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            touch-action: manipulation;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        @media (min-width: 768px) {
+            .gallery-btn {
+                width: 48px;
+                height: 48px;
+            }
+        }
+
+        .gallery-btn:hover {
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .gallery-btn:active {
+            transform: scale(0.95);
+        }
+
+        .gallery-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .gallery-btn svg {
+                width: 24px;
+                height: 24px;
+            }
+        }
+
+        .thumbnail-container {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: center;
+            overflow-x: auto;
+            padding: 0.5rem 0;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .thumbnail {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            cursor: pointer;
+            opacity: 0.5;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            flex-shrink: 0;
+            border-radius: 3px;
+        }
+
+        @media (min-width: 768px) {
+            .thumbnail {
+                width: 85px;
+                height: 85px;
+            }
+        }
+
+        .thumbnail:hover,
+        .thumbnail.active {
+            opacity: 1;
+            border-color: #292524;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        /* Item Info */
+        .item-info {
+            background: white;
+            padding: 2rem 1.5rem;
+            border-radius: 4px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+
+        @media (min-width: 768px) {
+            .item-info {
+                padding: 3rem 2.5rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .item-info {
+                position: sticky;
+                top: 6rem;
+            }
+        }
+
+        .item-info h1 {
             font-size: clamp(2rem, 4vw, 3rem);
             font-weight: 300;
-            letter-spacing: 0.15em;
             margin-bottom: 1rem;
+            letter-spacing: 0.08em;
+            line-height: 1.2;
         }
 
-        .item-price {
-            font-size: 1.5rem;
+        @media (min-width: 768px) {
+            .item-info h1 {
+                letter-spacing: 0.1em;
+                margin-bottom: 1.25rem;
+            }
+        }
+
+        .price {
+            font-size: clamp(1.5rem, 4vw, 2rem);
             color: #57534e;
             margin-bottom: 2rem;
+            font-weight: 400;
         }
 
-        .item-description {
-            font-size: 1.125rem;
+        @media (min-width: 768px) {
+            .price {
+                margin-bottom: 2.5rem;
+            }
+        }
+
+        .description {
+            font-size: 1rem;
             line-height: 1.8;
-            color: #44403c;
+            color: #57534e;
             font-weight: 300;
+            margin-bottom: 2.5rem;
         }
 
-        .composition-section {
-            border-top: 1px solid #d6d3d1;
-            padding-top: 2rem;
+        @media (min-width: 768px) {
+            .description {
+                font-size: 1.125rem;
+                line-height: 1.9;
+                margin-bottom: 3rem;
+            }
         }
+
 
         .composition-title {
-            font-size: 1.25rem;
+            font-size: 1.125rem;
             font-weight: 400;
-            letter-spacing: 0.1em;
             margin-bottom: 1rem;
+            letter-spacing: 0.08em;
+        }
+
+        @media (min-width: 768px) {
+            .composition-title {
+                font-size: 1.25rem;
+                margin-bottom: 1.25rem;
+                letter-spacing: 0.1em;
+            }
         }
 
         .composition-list {
             list-style: none;
-            font-size: 1rem;
             color: #57534e;
+            font-weight: 300;
             line-height: 1.8;
+            font-size: 0.95rem;
         }
 
-        .composition-list li {
+        @media (min-width: 768px) {
+            .composition-list {
+                line-height: 1.9;
+                font-size: 1rem;
+            }
+        }
+
+        .composition-list li::before {
+            content: "• ";
+            margin-right: 0.5rem;
+        }
+
+        .secondary-composition {
+            margin-top: 1.25rem;
+            padding-left: 1rem;
+        }
+
+        .secondary-title {
+            font-size: 0.875rem;
+            font-weight: 400;
+            text-transform: capitalize;
+            color: #292524;
             margin-bottom: 0.5rem;
         }
 
-        .contact-button {
-            display: inline-block;
-            background: #292524;
+        .divider {
+            height: 1px;
+            background: #e7e5e4;
+            margin: 2rem 0;
+        }
+
+        @media (min-width: 768px) {
+            .divider {
+                margin: 2.5rem 0;
+            }
+        }
+
+        /* Image counter for mobile */
+        .image-counter {
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            background: rgba(0, 0, 0, 0.7);
             color: white;
-            padding: 1rem 3rem;
-            text-decoration: none;
-            letter-spacing: 0.15em;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
             font-size: 0.875rem;
-            transition: all 0.3s;
-            margin-top: 2rem;
+            letter-spacing: 0.05em;
+            z-index: 5;
+            transition: opacity 0.3s;
+        }
+
+        @media (min-width: 768px) {
+            .image-counter {
+                display: none;
+            }
+        }
+
+        .main-image-container:hover .image-counter {
+            opacity: 0;
+        }
+
+        @media (max-width: 1023px) {
+            .main-image-container:hover .image-counter {
+                opacity: 1;
+            }
+        }
+
+        /* Swipe hint for mobile */
+        .swipe-hint {
+            text-align: center;
+            font-size: 0.75rem;
+            color: #78716c;
+            margin-top: 0.75rem;
+            letter-spacing: 0.05em;
+        }
+
+        @media (min-width: 768px) {
+            .swipe-hint {
+                display: none;
+            }
+        }
+
+        /* Zoom hint for desktop */
+        .zoom-hint {
+            display: none;
+            text-align: center;
+            font-size: 0.75rem;
+            color: #78716c;
+            margin-top: 0.75rem;
+            letter-spacing: 0.05em;
+        }
+
+        @media (min-width: 1024px) {
+            .zoom-hint {
+                display: block;
+            }
+        }
+
+        /* Contact Footer */
+        .contact-footer {
+            background: #1c1917;
+            color: white;
+            padding: 2rem 1.5rem 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .contact-footer {
+                padding: 2rem 2rem 2rem;
+            }
+        }
+
+        .footer-header {
+            max-width: 80rem;
+            margin: 0 auto;
+            /* display: block; */
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .footer-header h3 {
+            font-size: 1rem;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .footer-content {
+            max-width: 80rem;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        @media (min-width: 768px) {
+            .footer-content {
+                grid-template-columns: repeat(3, 1fr);
+                text-align: left;
+            }
+            /* .footer-header {
+                text-align: left;
+            } */
+        }
+
+        .footer-section {
             text-align: center;
         }
 
-        .contact-button:hover {
-            background: #44403c;
+        .footer-section h4 {
+            font-size: 1.25rem;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            margin-bottom: 1.5rem;
+            color: white;
         }
+
+        .footer-section p {
+            font-size: 1rem;
+            font-weight: 300;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @media (min-width: 768px) {
+            .social-links {
+                flex-direction: row;
+                gap: 1.5rem;
+                align-items: flex-start;
+            }
+        }
+
+        .social-links a {
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-bottom {
+            max-width: 80rem;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            font-size: 0.875rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.6);
+            letter-spacing: 0.05em;
+        }   
     </style>
 </head>
 <body>
-    <a href="/ottaviadaracollection/static/collections/outside-the-cottage.html" class="back-button">← BACK TO COLLECTION</a>
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="/ottaviadaracollection/static/collections/outside-the-cottage.html" class="back-link">← Torna alla collezione</a>
+    </nav>
 
-    <div class="item-container">
-        <div class="item-layout">
-            <div class="image-gallery">
-                <img class="main-image" src="/ottaviadaracollection/static/images/ebringtonBlouse/MG_452.jpg" alt="Ebrington Blouse">
-            </div>
-
-            <div class="item-details">
-                <div>
-                    <h1 class="item-title">EBRINGTON BLOUSE</h1>
-                    <p class="item-price">€125.00</p>
+    <!-- Item Detail -->
+    <main class="item-detail">
+        <div class="item-content">
+            <!-- Gallery -->
+            <div class="gallery">
+                <div class="main-image-container" id="imageContainer">
+                    <img id="mainImage" class="main-image" src="" alt="Ebrington Blouse">
+                    <div class="gallery-nav">
+                        <button class="gallery-btn" onclick="previousImage()" aria-label="Previous image">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                            </svg>
+                        </button>
+                        <button class="gallery-btn" onclick="nextImage()" aria-label="Next image">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="image-counter">
+                        <span id="imageCounter">1 / 1</span>
+                    </div>
                 </div>
-
-                <p class="item-description">
+                <div class="thumbnail-container" id="thumbnailContainer">
+                    <!-- Thumbnails will be generated automatically -->
+                </div>
+                <p class="swipe-hint">Swipe or tap arrows to view more</p>
+                <p class="zoom-hint">Hover to zoom and explore details</p>
+            </div>
+            <!-- Item Info -->
+            <div class="item-info">
+                <h1>Ebrington Blouse</h1>
+                <p class="price">€125.00</p>
+                <p class="description">
                     Blusa in twill color avorio di linea diritta e morbida, leggermente trasparente, colletto con coulisse e nastrino da annodare, pieghe sottili che contornano l'apertura frontale e arricchiscono lo sprone posteriore, maniche ampie con elastico e arricciatura ai polsi.
                 </p>
 
                 <div class="composition-section">
-                    <h3 class="composition-title">COMPOSITION</h3>
+                    <h4 class="composition-title">Composition</h4>
                     <ul class="composition-list">
                         <li>100% wool</li>
                     </ul>
                 </div>
-
-                <a href="mailto:info@ottaviadara.com" class="contact-button">INQUIRE ABOUT THIS ITEM</a>
             </div>
         </div>
-    </div>
+    </main>
+
+    <!-- Contact Footer -->
+    <footer class="contact-footer">
+        <div class="footer-header">
+            <h3>Per ordini e ulteriori informazioni</h3>
+        </div>
+
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Contatti</h4>
+                <p><a href="mailto:ottaviadara@gmail.com">ottaviadara@gmail.com</a></p>
+                <p><a href="tel:+393469705199">+39 346 970 5199</a></p>
+            </div>
+            <div class="footer-section">
+                <h4>Socials</h4>
+                <div class="social-links">
+                    <a href="https://instagram.com/ottaviadaracollection" target="_blank" rel="noopener">Instagram</a>
+                    <a href="https://pinterest.com/ottaviadara" target="_blank" rel="noopener">Pinterest</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Lab</h4>
+                <p>Treviso, Italia</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Ottavia Dara Collection. Tutti i diritti riservati.</p>
+        </div>
+    </footer>
+
+    <script>
+        // ========================================
+        // CONFIGURATION - Only edit this section
+        // ========================================
+        const config = {
+            imageFolderPath: '/ottaviadaracollection/static/images/ebringtonBlouse/',
+            imageFiles: [
+                'MG_452.jpg',
+                'MG_492.jpg',
+                'MG_525.jpg',
+                'MG_699.jpg'
+            ],
+            mainImageIndex: 0
+        };
+        // ========================================
+        // END CONFIGURATION
+        // ========================================
+
+        const images = config.imageFiles.map(file => config.imageFolderPath + file);
+        let currentIndex = config.mainImageIndex;
+        let isDesktop = window.innerWidth >= 1024;
+
+        function initGallery() {
+            const mainImage = document.getElementById('mainImage');
+            const thumbnailContainer = document.getElementById('thumbnailContainer');
+            
+            mainImage.src = images[currentIndex];
+            
+            images.forEach((imagePath, index) => {
+                const thumbnail = document.createElement('img');
+                thumbnail.className = 'thumbnail' + (index === currentIndex ? ' active' : '');
+                thumbnail.src = imagePath;
+                thumbnail.alt = `View ${index + 1}`;
+                thumbnail.onclick = () => changeImage(index);
+                thumbnailContainer.appendChild(thumbnail);
+            });
+            
+            updateImageCounter();
+        }
+
+        function updateImageCounter() {
+            const counter = document.getElementById('imageCounter');
+            if (counter) {
+                counter.textContent = `${currentIndex + 1} / ${images.length}`;
+            }
+        }
+
+        function changeImage(index) {
+            currentIndex = index;
+            const mainImage = document.getElementById('mainImage');
+            mainImage.src = images[index];
+            
+            const thumbnails = document.querySelectorAll('.thumbnail');
+            thumbnails.forEach((thumb, i) => {
+                thumb.classList.toggle('active', i === index);
+            });
+
+            updateImageCounter();
+
+            if (!isDesktop) {
+                thumbnails[index].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+            }
+        }
+
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            changeImage(currentIndex);
+        }
+
+        function previousImage() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            changeImage(currentIndex);
+        }
+
+        const imageContainer = document.getElementById('imageContainer');
+        const mainImage = document.getElementById('mainImage');
+
+        if (isDesktop) {
+            imageContainer.addEventListener('mouseenter', () => {
+                mainImage.classList.add('zoom-enabled');
+            });
+
+            imageContainer.addEventListener('mousemove', (e) => {
+                if (!mainImage.classList.contains('zoom-enabled')) return;
+
+                const rect = imageContainer.getBoundingClientRect();
+                const x = ((e.clientX - rect.left) / rect.width) * 100;
+                const y = ((e.clientY - rect.top) / rect.height) * 100;
+
+                mainImage.style.transformOrigin = `${x}% ${y}%`;
+                mainImage.style.transform = 'scale(1.3)';
+            });
+
+            imageContainer.addEventListener('mouseleave', () => {
+                mainImage.classList.remove('zoom-enabled');
+                mainImage.style.transform = 'scale(1)';
+            });
+        }
+
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        imageContainer.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        imageContainer.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    nextImage();
+                } else {
+                    previousImage();
+                }
+            }
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                previousImage();
+            } else if (e.key === 'ArrowRight') {
+                nextImage();
+            }
+        });
+
+        window.addEventListener('resize', () => {
+            const wasDesktop = isDesktop;
+            isDesktop = window.innerWidth >= 1024;
+            
+            if (wasDesktop && !isDesktop) {
+                mainImage.classList.remove('zoom-enabled');
+                mainImage.style.transform = 'scale(1)';
+            }
+        });
+
+        initGallery();
+    </script>
 </body>
 </html>
