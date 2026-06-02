@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Libre+Bodoni:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Libre+Bodoni:ital,wght@0,400..700;1,400..700&display=swap"
+        rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Outside the Cottage - Ottavia Dara Collection</title>
+    <title>Summer Breeze - Ottavia Dara Collection</title>
     <style>
         * {
             margin: 0;
@@ -156,20 +159,6 @@
             transform: scale(1.05);
         }
 
-        #belt-image {
-            width: 200%;
-            height: 200%;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .item-card:hover #belt-image {
-            transform: translate(-50%, -50%) scale(1.05);
-        }
-
         .item-overlay {
             display: none;
         }
@@ -237,7 +226,6 @@
         .footer-header {
             max-width: 80rem;
             margin: 0 auto;
-            /* display: block; */
             text-align: center;
             margin-bottom: 3rem;
         }
@@ -265,9 +253,6 @@
                 grid-template-columns: repeat(3, 1fr);
                 text-align: left;
             }
-            /* .footer-header {
-                text-align: left;
-            } */
         }
 
         .footer-section {
@@ -335,8 +320,7 @@
             font-weight: 300;
             color: rgba(255, 255, 255, 0.6);
             letter-spacing: 0.05em;
-        }   
-
+        }
     
         /* Hero Brand Styling in Collection Header */
         .hero-brand {
@@ -402,105 +386,149 @@
     
     </style>
 </head>
+
 <body>
     <!-- Collection Header -->
     <section class="collection-header">
-        <img src="/static/images/outsideTheCottage/sample.jpg" alt="Collection Header">
+        <img src="/static/images/summerBreeze/completo_shorts_top/1.jpg" alt="Collection Header">
         <a href="/index.html" onclick="goBack(event)" class="back-button">←</a>
         <div class="hero-brand">
             <h1>OTTAVIA DARA</h1>
             <h3>COLLECTION</h3>
         </div>
         <div class="collection-header-content">
-            <h1>OUTSIDE THE COTTAGE</h1>
-            <p>Una collezione ispirata al british heritage della campagna inglese, in cui la tradizione sartoriale si fonde con lo stile moderno.</p>
+            <h1>SUMMER BREEZE</h1>
+            <p>Una collezione fresca e leggera, dominata da tessuti naturali ricamati, lini candidi e fantasie vivaci che evocano la brezza dell'estate.</p>
         </div>
     </section>
 
     <!-- Items Grid -->
     <section class="items-section">
         <div class="items-grid">
-            <!-- Burford Blazer -->
-            <a href="/static/items/burford-blazer.html" class="item-card">
+            <!-- Top Romance -->
+            <a href="/static/items/top.html" class="item-card">
                 <div class="item-image-container">
-                    <img class="item-image" src="/static/images/burfordBlazer/MG_233.jpg" alt="Burford Blazer">
+                    <img class="item-image" src="/static/images/summerBreeze/top/1.jpg" alt="Top Romance">
                     <div class="item-overlay"></div>
                 </div>
                 <div class="item-info">
-                    <div class="item-name">Burford Blazer</div>
-                    <div class="item-price">€225.00</div>
+                    <div class="item-name">Top Romance</div>
+                    <div class="item-price">€75.00</div>
                 </div>
             </a>
 
-            <!-- Ebrington Blouse -->
-            <a href="/static/items/ebrington-blouse.html" class="item-card">
+            <!-- Shorts Romance -->
+            <a href="/static/items/shorts.html" class="item-card">
                 <div class="item-image-container">
-                    <img class="item-image" src="/static/images/ebringtonBlouse/MG_452.jpg" alt="Ebrington Blouse">
+                    <img class="item-image" src="/static/images/summerBreeze/shorts/1.jpg" alt="Shorts Romance">
                     <div class="item-overlay"></div>
                 </div>
                 <div class="item-info">
-                    <h3 class="item-name">Ebrington Blouse</h3>
-                    <p class="item-price">€125.00</p>
+                    <h3 class="item-name">Shorts Romance</h3>
+                    <p class="item-price">€70.00</p>
                 </div>
             </a>
 
-            <!-- Clovelly Skirt -->
-            <a href="/static/items/clovelly-skirt.html" class="item-card">
+            <!-- Chemisier Provence  -->
+            <a href="/static/items/abito-balza.html" class="item-card">
                 <div class="item-image-container">
-                    <img class="item-image" src="/static/images/clovellySkirt/MG_401.jpg" alt="Clovelly Skirt">
+                    <img class="item-image" src="/static/images/summerBreeze/vestito_balza/1.jpg"
+                        alt="Chemisier Provence ">
                     <div class="item-overlay"></div>
                 </div>
                 <div class="item-info">
-                    <h3 class="item-name">Clovelly Skirt</h3>
-                    <p class="item-price">€75.00</p>
+                    <h3 class="item-name">Chemisier Provence </h3>
+                    <p class="item-price">€150.00</p>
                 </div>
             </a>
 
-            <!-- Kilnsey Dress -->
-            <a href="/static/items/kilnsey-dress.html" class="item-card">
+            <!-- Abito Tropical  -->
+            <a href="/static/items/abito-lungo-fiocco.html" class="item-card">
                 <div class="item-image-container">
-                    <img class="item-image" src="/static/images/kilnseyDress/MG_76.jpg" alt="Kilnsey Dress">
+                    <img class="item-image" src="/static/images/summerBreeze/abito_lungo_fiocco/1.jpg"
+                        alt="Abito Tropical ">
                     <div class="item-overlay"></div>
                 </div>
                 <div class="item-info">
-                    <h3 class="item-name">Kilnsey Dress</h3>
-                    <p class="item-price">€215.00</p>
+                    <h3 class="item-name">Abito Tropical </h3>
+                    <p class="item-price">€175.00</p>
                 </div>
             </a>
 
-            <!-- Grassington Belt -->
-            <a href="/static/items/grassington-belt.html" class="item-card">
+            <!-- Gilet Natural -->
+            <a href="/static/items/gilet.html" class="item-card">
                 <div class="item-image-container">
-                    <img id="belt-image" class="item-image" src="/static/images/grassingtonBelt/MG_128.jpg" alt="Grassington Belt">
+                    <img class="item-image" src="/static/images/summerBreeze/gilet/1.jpg" alt="Gilet Natural">
                     <div class="item-overlay"></div>
                 </div>
                 <div class="item-info">
-                    <h3 class="item-name">Grassington Belt</h3>
-                    <p class="item-price">€65.00</p>
-                </div>
-            </a>
-
-            <!-- Stanton Cape -->
-            <a href="/static/items/stanton-cape.html" class="item-card">
-                <div class="item-image-container">
-                    <img class="item-image" src="/static/images/stantonCape/MG_299.jpg" alt="Stanton Cape">
-                    <div class="item-overlay"></div>
-                </div>
-                <div class="item-info">
-                    <h3 class="item-name">Stanton Cape</h3>
-                    <p class="item-price">€185.00</p>
-                </div>
-            </a>
-
-            <!-- harshy Shirt Jacket -->
-            <a href="/static/items/harshy-shirt-jacket.html" class="item-card">
-                <div class="item-image-container">
-                    <img class="item-image" src="/static/images/harshyShirtJacket/MG_001.jpeg" alt="Harshy Shirt Jacket">
-                    <div class="item-overlay"></div>
-                </div>
-                <div class="item-info">
-                    <h3 class="item-name">Harshy Shirt Jacket</h3>
+                    <h3 class="item-name">Gilet Natural</h3>
                     <p class="item-price">€180.00</p>
+                </div>
+            </a>
+
+            <!-- Blusa Melograno -->
+            <a href="/static/items/blusa.html" class="item-card">
+                <div class="item-image-container">
+                    <img class="item-image" src="/static/images/summerBreeze/camicetta_smanicata/1.jpg"
+                        alt="Blusa Melograno">
+                    <div class="item-overlay"></div>
+                </div>
+                <div class="item-info">
+                    <h3 class="item-name">Blusa Melograno</h3>
+                    <p class="item-price">€85.00</p>
+                </div>
+            </a>
+
+            <!-- Gonna Melograno -->
+            <a href="/static/items/gonna.html" class="item-card">
+                <div class="item-image-container">
+                    <img class="item-image" src="/static/images/summerBreeze/gonna_portafoglio/1.jpg"
+                        alt="Gonna Melograno">
+                    <div class="item-overlay"></div>
+                </div>
+                <div class="item-info">
+                    <h3 class="item-name">Gonna Melograno</h3>
+                    <p class="item-price">€115.00</p>
+                </div>
+            </a>
+
+            <!-- Abito Candy  -->
+            <a href="/static/items/abito-corto.html" class="item-card">
+                <div class="item-image-container">
+                    <img class="item-image" src="/static/images/summerBreeze/abito_corto_fiocco/1.jpg"
+                        alt="Abito Candy ">
+                    <div class="item-overlay"></div>
+                </div>
+                <div class="item-info">
+                    <h3 class="item-name">Abito Candy </h3>
+                    <p class="item-price">€95.00</p>
+                </div>
+            </a>
+
+            <!-- Completo Romance -->
+            <a href="/static/items/completo-shorts-top.html" class="item-card">
+                <div class="item-image-container">
+                    <img class="item-image" src="/static/images/summerBreeze/completo_shorts_top/1.jpg"
+                        alt="Completo Romance">
+                    <div class="item-overlay"></div>
+                </div>
+                <div class="item-info">
+                    <h3 class="item-name">Completo Romance</h3>
+                    <p class="item-price">€130.00</p>
+                </div>
+            </a>
+
+            <!-- Completo Melograno -->
+            <a href="/static/items/completo-camicia-gonna.html" class="item-card">
+                <div class="item-image-container">
+                    <img class="item-image" src="/static/images/summerBreeze/completo_camicia_gonna/1.jpg"
+                        alt="Completo Melograno">
+                    <div class="item-overlay"></div>
+                </div>
+                <div class="item-info">
+                    <h3 class="item-name">Completo Melograno</h3>
+                    <p class="item-price">€185.00</p>
                 </div>
             </a>
 
@@ -544,4 +572,5 @@
         }
     </script>
 </body>
+
 </html>

@@ -22,59 +22,20 @@
             color: #292524;
             overflow-x: hidden;
         }
-        /* Navigation */
-        .nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            padding: 1rem 1.5rem;
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
-            z-index: 100;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-            border-bottom: 1px solid rgba(0,0,0,0.05);
+        
         }
+
+        
 
         @media (min-width: 768px) {
-            .nav {
-                padding: 1.5rem 2rem;
-            }
-        }
-
-        .back-link {
-            color: #292524;
-            text-decoration: none;
-            font-size: 0.8rem;
-            letter-spacing: 0.12em;
-            transition: opacity 0.3s;
-            display: inline-flex;
-            align-items: center;
-            min-height: 44px;
-        }
-
-        @media (min-width: 768px) {
-            .back-link {
-                font-size: 0.875rem;
-                letter-spacing: 0.15em;
-            }
+            
         }
 
         .back-link:hover {
             opacity: 0.6;
         }
 
-        /* Item Detail */
-        .item-detail {
-            max-width: 90rem;
-            margin: 0 auto;
-            padding: 5rem 1rem 2rem;
-        }
-
-        @media (min-width: 768px) {
-            .item-detail {
-                padding: 6rem 2rem 3rem;
-            }
+        
         }
 
         .item-content {
@@ -552,12 +513,156 @@
             color: rgba(255, 255, 255, 0.6);
             letter-spacing: 0.05em;
         }   
-    </style>
+    
+        /* WhatsApp Button */
+        .info-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 1rem 2rem;
+            background: #292524;
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            font-weight: 300;
+            border-radius: 2px;
+            margin-top: 2rem;
+            transition: all 0.3s ease;
+            font-family: 'Playfair Display', Georgia, serif;
+            cursor: pointer;
+            border: 1px solid #292524;
+            min-height: 48px;
+        }
+
+        .info-btn:hover {
+            background: transparent;
+            color: #292524;
+        }
+
+        .info-btn svg {
+            width: 18px;
+            height: 18px;
+            margin-right: 0.75rem;
+            fill: currentColor;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            padding: 0 1.5rem;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .back-link {
+            position: absolute;
+            left: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #292524;
+            text-decoration: none;
+            font-size: 1.5rem !important;
+            transition: opacity 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            min-width: 44px;
+            z-index: 110;
+        }
+
+        
+
+        
+
+        
+
+        /* Item Detail spacious padding */
+        .item-detail {
+            max-width: 90rem;
+            margin: 0 auto;
+            padding: 6.5rem 1rem 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .item-detail {
+                padding: 7.5rem 2rem 3rem;
+            }
+        }
+
+
+        
+
+        
+
+        @media (min-width: 768px) {
+            
+        }
+
+
+        .nav-brand {
+            text-align: center;
+            pointer-events: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transform: scale(0.5);
+            transform-origin: center center;
+        }
+
+        .nav-brand h1 {
+            font-family: 'Libre Bodoni', 'Playfair Display', Georgia, serif !important;
+            font-size: clamp(2.5rem, 10vw, 6rem) !important;
+            font-weight: 300 !important;
+            margin: 0 !important;
+            color: #292524 !important;
+            line-height: 1.1 !important;
+            letter-spacing: normal !important;
+            text-transform: uppercase !important;
+        }
+
+        .nav-brand h3 {
+            font-family: 'Libre Bodoni', 'Playfair Display', Georgia, serif !important;
+            font-size: clamp(1rem, 2vw, 1.5rem) !important;
+            font-weight: 300 !important;
+            letter-spacing: 0.15em !important;
+            text-transform: uppercase !important;
+            margin-top: 0.25rem !important;
+            margin-bottom: 0 !important;
+            opacity: 0.9 !important;
+            color: #292524 !important;
+        }
+
+        @media (min-width: 768px) {
+            .nav-brand h3 {
+                letter-spacing: 0.2em !important;
+            }
+        }
+
+</style>
 </head>
 <body>
     <!-- Navigation -->
     <nav class="nav">
-        <a href="/static/collections/outside-the-cottage.html" class="back-link">← Torna alla collezione</a>
+        <a href="/static/collections/outside-the-cottage.html" onclick="goBack(event)" class="back-link">←</a>
+        <div class="nav-brand">
+            <h1>OTTAVIA DARA</h1>
+            <h3>COLLECTION</h3>
+        </div>
     </nav>
 
     <!-- Item Detail -->
@@ -603,6 +708,13 @@
                         <li>12% poliestere</li>
                     </ul>
                 </div>
+            
+                <a href="https://wa.me/393469705199?text=Ciao%2C%20vorrei%20chiedere%20informazioni%20sull%27articolo%3A%20Clovelly%20Skirt" target="_blank" rel="noopener" class="info-btn">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.504-5.729-1.463L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.963C16.59 1.981 14.119.957 11.49.957c-5.43 0-9.85 4.37-9.855 9.801-.002 1.8.483 3.55 1.401 5.148L1.936 21.67l6.027-1.576.012.01-.328-.95z"/>
+                    </svg>
+                    Chiedi info
+                </a>
             </div>
         </div>
     </main>
@@ -776,6 +888,13 @@
                 mainImage.style.transform = 'scale(1)';
             }
         });
+
+        function goBack(event) {
+            if (document.referrer && document.referrer.includes(window.location.hostname)) {
+                event.preventDefault();
+                window.history.back();
+            }
+        }
 
         initGallery();
     </script>
