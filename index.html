@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ottavia Dara Collection</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Libre+Bodoni:ital,wght@0,400..700;1,400..700&display=swap"
         rel="stylesheet">
@@ -167,11 +169,6 @@
             pointer-events: auto;
         }
 
-        body.scrolled .scroll-indicator {
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.5s ease;
-        }
 
         .hero h1 {
             font-size: clamp(2.5rem, 10vw, 6rem);
@@ -218,32 +215,6 @@
             }
         }
 
-        .scroll-indicator {
-            position: absolute;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 10;
-            animation: bounce 2s infinite;
-        }
-
-        .scroll-indicator-inner {
-            width: 24px;
-            height: 40px;
-            border: 2px solid rgba(255, 255, 255, 0.6);
-            border-radius: 20px;
-            display: flex;
-            justify-content: center;
-            padding-top: 8px;
-        }
-
-        .scroll-dot {
-            width: 4px;
-            height: 12px;
-            background: rgba(255, 255, 255, 0.6);
-            border-radius: 2px;
-            animation: pulse 2s infinite;
-        }
 
         /* Collection Banner */
         .collection-banner {
@@ -921,7 +892,7 @@
 
         /* All Items Section */
         .all-items-section {
-            padding: 6rem 1.5rem;
+            padding: 2rem 1.5rem;
             background: #fafaf9;
             max-width: 100vw;
             overflow: hidden;
@@ -1051,14 +1022,264 @@
                 font-size: 0.9rem;
             }
         }
+
+        /* Hamburger Menu Button */
+        .hamburger-btn {
+            position: absolute;
+            top: 40px;
+            left: 1.5rem;
+            transform: translateY(-50%);
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 32px;
+            height: 20px;
+            padding: 0;
+        }
+
+        body.scrolled .hamburger-btn {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .hamburger-btn span {
+            display: block;
+            height: 2px;
+            width: 100%;
+            background-color: white;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            border-radius: 1px;
+        }
+
+        /* When menu is open, hamburger changes to dark and turns into an X */
+        .hamburger-btn.open span {
+            background-color: #292524;
+        }
+
+        .hamburger-btn.open span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+
+        .hamburger-btn.open span:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+
+        .hamburger-btn.open span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+
+        /* Menu Backdrop overlay */
+        .menu-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 998;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+
+        .menu-backdrop.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* Menu Panel */
+        .menu-panel {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            max-width: 320px;
+            height: 100%;
+            background: rgba(250, 250, 249, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 999;
+            transition: left 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 20px 0 50px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            padding: 5rem 2rem 3rem;
+            overflow-y: auto;
+            border-right: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .menu-panel.open {
+            left: 0;
+        }
+
+        /* Menu Links styling */
+        .menu-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            padding: 0;
+            margin: 0;
+        }
+
+        .menu-links>li>a,
+        .menu-links>li>a:link,
+        .menu-links>li>a:visited,
+        .menu-links>li>a:active {
+            font-family: 'Libre Bodoni', serif;
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: #292524;
+            text-decoration: none;
+            letter-spacing: 0.08em;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: color 0.3s ease, padding-left 0.3s ease;
+            position: relative;
+            outline: none;
+        }
+
+        .menu-links>li>a:focus,
+        .menu-links>li>a:focus-visible {
+            padding-left: 0;
+            outline: none;
+        }
+
+        @media (hover: hover) {
+            .menu-links>li>a:hover {
+                color: #78716c;
+                padding-left: 8px;
+            }
+        }
+
+        /* Dropdown arrow */
+        .sub-arrow {
+            font-size: 0.75rem;
+            margin-left: 0.5rem;
+            transition: transform 0.3s ease;
+            color: #a8a29e;
+            display: inline-block;
+        }
+
+        .menu-toggle-sub.active .sub-arrow {
+            transform: rotate(180deg);
+        }
+
+        /* Sub Links Accordion */
+        .menu-sub-links {
+            list-style: none;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), margin-top 0.4s ease;
+            padding-left: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+            margin: 0;
+        }
+
+        .menu-sub-links.open {
+            max-height: 200px;
+            margin-top: 1rem;
+        }
+
+        .menu-sub-links a {
+            font-family: 'Libre Bodoni', serif;
+            font-size: 0.95rem;
+            font-weight: 300;
+            color: #57534e;
+            text-decoration: none;
+            letter-spacing: 0.05em;
+            transition: color 0.3s ease, padding-left 0.3s ease;
+            outline: none;
+        }
+
+        .menu-sub-links a:focus,
+        .menu-sub-links a:focus-visible {
+            padding-left: 0;
+            outline: none;
+        }
+
+        @media (hover: hover) {
+            .menu-sub-links a:hover {
+                color: #292524;
+                padding-left: 6px;
+            }
+        }
+
+        /* Toast notification styling for coming soon items */
+        .coming-soon-toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #1c1917;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            font-family: 'Libre Bodoni', serif;
+            font-size: 0.95rem;
+            letter-spacing: 0.05em;
+            z-index: 10000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+            opacity: 0;
+            pointer-events: none;
+            text-align: center;
+        }
+
+        .coming-soon-toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
     </style>
 </head>
 
 <body>
+    <!-- Hamburger Menu Button -->
+    <button class="hamburger-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- Menu Backdrop Overlay -->
+    <div class="menu-backdrop" id="menuBackdrop"></div>
+
+    <!-- Menu Panel Drawer -->
+    <nav class="menu-panel" id="menuPanel">
+        <ul class="menu-links">
+            <li><a href="/static/collections/summer-breeze.html">Nuova collezione</a></li>
+            <li class="menu-item-has-children">
+                <a href="javascript:void(0)" class="menu-toggle-sub" id="donnaToggle">Donna <span
+                        class="sub-arrow">▼</span></a>
+                <ul class="menu-sub-links" id="donnaSubLinks">
+                    <li><a href="/static/collections/outside-the-cottage.html">Fall/Winter 2025</a></li>
+                    <li><a href="/static/collections/summer-breeze.html">Summer 2026</a></li>
+                </ul>
+            </li>
+            <li><a href="#" class="coming-soon-link" onclick="showComingSoonAlert(event)">Uomo</a></li>
+            <li><a href="#allItemsSection" class="scroll-link">All items</a></li>
+            <li><a href="#moreAboutSection" class="scroll-link">More about</a></li>
+            <li><a href="#contactFooter" class="scroll-link">Contatti</a></li>
+        </ul>
+    </nav>
+
     <!-- Hero Section -->
     <section class="hero">
-        <video class="hero-video" autoplay loop muted playsinline preload="auto">
-            <source src="/static/videos/outsideTheCottage.mp4" type="video/mp4">
+        <video class="hero-video" id="heroVideoLow" autoplay loop muted playsinline preload="auto">
+            <source src="/static/videos/REEL 1-MISTO_720p.mp4" type="video/mp4">
+        </video>
+        <video class="hero-video" id="heroVideoHigh" loop muted playsinline preload="none"
+            style="opacity: 0; pointer-events: none; transition: opacity 0.5s ease;">
         </video>
         <div class="hero-overlay"></div>
         <div class="hero-content">
@@ -1067,11 +1288,6 @@
             <p>Handcrafted clothes made in Italy</p>
         </div>
         <a href="/static/collections/summer-breeze.html" class="hero-summer-link">Scopri la collezione Summer Breeze</a>
-        <div class="scroll-indicator">
-            <div class="scroll-indicator-inner">
-                <div class="scroll-dot"></div>
-            </div>
-        </div>
     </section>
 
     <!-- Latest Arrivals Section -->
@@ -1087,7 +1303,7 @@
                 <!-- Top Romance -->
                 <a href="/static/items/top.html" class="carousel-card">
                     <div class="carousel-card-image">
-                        <img src="/static/images/summerBreeze/top/1.jpg" alt="Top Romance">
+                        <img src="/static/images/summerBreeze/top/1_card.webp" alt="Top Romance" loading="lazy">
                     </div>
                     <div class="carousel-card-info">
                         <span class="carousel-card-name">Top Romance</span>
@@ -1097,7 +1313,7 @@
                 <!-- Shorts Romance -->
                 <a href="/static/items/shorts.html" class="carousel-card">
                     <div class="carousel-card-image">
-                        <img src="/static/images/summerBreeze/shorts/1.jpg" alt="Shorts Romance">
+                        <img src="/static/images/summerBreeze/shorts/1_card.webp" alt="Shorts Romance" loading="lazy">
                     </div>
                     <div class="carousel-card-info">
                         <span class="carousel-card-name">Shorts Romance</span>
@@ -1107,17 +1323,19 @@
                 <!-- Completo Romance -->
                 <a href="/static/items/completo-shorts-top.html" class="carousel-card">
                     <div class="carousel-card-image">
-                        <img src="/static/images/summerBreeze/completo_shorts_top/1.jpg" alt="Completo Romance">
+                        <img src="/static/images/summerBreeze/completo_shorts_top/1_card.webp" alt="Completo Romance"
+                            loading="lazy">
                     </div>
                     <div class="carousel-card-info">
                         <span class="carousel-card-name">Completo Romance</span>
-                        <span class="carousel-card-price">€130.00</span>
+                        <span class="carousel-card-price">€140.00</span>
                     </div>
                 </a>
                 <!-- Chemisier Provence  -->
                 <a href="/static/items/abito-balza.html" class="carousel-card">
                     <div class="carousel-card-image">
-                        <img src="/static/images/summerBreeze/vestito_balza/1.jpg" alt="Chemisier Provence ">
+                        <img src="/static/images/summerBreeze/vestito_balza/1_card.webp" alt="Chemisier Provence "
+                            loading="lazy">
                     </div>
                     <div class="carousel-card-info">
                         <span class="carousel-card-name">Chemisier Provence </span>
@@ -1127,7 +1345,7 @@
                 <!-- Gilet Natural -->
                 <a href="/static/items/gilet.html" class="carousel-card">
                     <div class="carousel-card-image">
-                        <img src="/static/images/summerBreeze/gilet/1.jpg" alt="Gilet Natural">
+                        <img src="/static/images/summerBreeze/gilet/1_card.webp" alt="Gilet Natural" loading="lazy">
                     </div>
                     <div class="carousel-card-info">
                         <span class="carousel-card-name">Gilet Natural</span>
@@ -1137,7 +1355,8 @@
                 <!-- Blusa Melograno -->
                 <a href="/static/items/blusa.html" class="carousel-card">
                     <div class="carousel-card-image">
-                        <img src="/static/images/summerBreeze/camicetta_smanicata/1.jpg" alt="Blusa Melograno">
+                        <img src="/static/images/summerBreeze/camicetta_smanicata/1_card.webp" alt="Blusa Melograno"
+                            loading="lazy">
                     </div>
                     <div class="carousel-card-info">
                         <span class="carousel-card-name">Blusa Melograno</span>
@@ -1147,7 +1366,8 @@
                 <!-- Gonna Melograno -->
                 <a href="/static/items/gonna.html" class="carousel-card">
                     <div class="carousel-card-image">
-                        <img src="/static/images/summerBreeze/gonna_portafoglio/1.jpg" alt="Gonna Melograno">
+                        <img src="/static/images/summerBreeze/gonna_portafoglio/1_card.webp" alt="Gonna Melograno"
+                            loading="lazy">
                     </div>
                     <div class="carousel-card-info">
                         <span class="carousel-card-name">Gonna Melograno</span>
@@ -1157,17 +1377,19 @@
                 <!-- Completo Melograno -->
                 <a href="/static/items/completo-camicia-gonna.html" class="carousel-card">
                     <div class="carousel-card-image">
-                        <img src="/static/images/summerBreeze/completo_camicia_gonna/1.jpg" alt="Completo Melograno">
+                        <img src="/static/images/summerBreeze/completo_camicia_gonna/1_card.webp"
+                            alt="Completo Melograno" loading="lazy">
                     </div>
                     <div class="carousel-card-info">
                         <span class="carousel-card-name">Completo Melograno</span>
-                        <span class="carousel-card-price">€185.00</span>
+                        <span class="carousel-card-price">€195.00</span>
                     </div>
                 </a>
                 <!-- Abito Candy  -->
                 <a href="/static/items/abito-corto.html" class="carousel-card">
                     <div class="carousel-card-image">
-                        <img src="/static/images/summerBreeze/abito_corto_fiocco/1.jpg" alt="Abito Candy ">
+                        <img src="/static/images/summerBreeze/abito_corto_fiocco/1_card.webp" alt="Abito Candy "
+                            loading="lazy">
                     </div>
                     <div class="carousel-card-info">
                         <span class="carousel-card-name">Abito Candy </span>
@@ -1177,7 +1399,8 @@
                 <!-- Abito Tropical  -->
                 <a href="/static/items/abito-lungo-fiocco.html" class="carousel-card">
                     <div class="carousel-card-image">
-                        <img src="/static/images/summerBreeze/abito_lungo_fiocco/1.jpg" alt="Abito Tropical ">
+                        <img src="/static/images/summerBreeze/abito_lungo_fiocco/1_card.webp" alt="Abito Tropical "
+                            loading="lazy">
                     </div>
                     <div class="carousel-card-info">
                         <span class="carousel-card-name">Abito Tropical </span>
@@ -1197,7 +1420,7 @@
 
     <!-- Collection Banner Summer Breeze -->
     <section class="collection-banner">
-        <img src="/static/images/summerBreeze/completo_shorts_top/1.jpg" alt="Summer Breeze">
+        <img src="/static/images/summerBreeze/completo_shorts_top/1.webp" alt="Summer Breeze">
         <div class="collection-banner-content">
             <h3>Summer Collection 2026</h3>
             <h2>Summer Breeze</h2>
@@ -1208,7 +1431,7 @@
 
     <!-- Collection Banner -->
     <section class="collection-banner">
-        <img src="/static/images/outsideTheCottage/fall-winter-background.jpg" alt="Outside the Cottage">
+        <img src="/static/images/outsideTheCottage/fall-winter-background.webp" alt="Outside the Cottage">
         <div class="collection-banner-content">
             <h3>Fall/Winter Collection 2025/26</h3>
             <h2>Outside the Cottage</h2>
@@ -1217,13 +1440,13 @@
     </section>
 
     <!-- All Items Grid Section -->
-    <section class="all-items-section">
+    <section class="all-items-section" id="allItemsSection">
         <h2 class="all-items-title">Tutti gli articoli</h2>
         <div class="all-items-grid">
             <!-- Top Romance -->
             <a href="/static/items/top.html" class="all-items-card">
                 <div class="all-items-card-image">
-                    <img src="/static/images/summerBreeze/top/1.jpg" alt="Top Romance">
+                    <img src="/static/images/summerBreeze/top/1_card.webp" alt="Top Romance" loading="lazy">
                 </div>
                 <div class="all-items-card-info">
                     <span class="all-items-card-name">Top Romance</span>
@@ -1233,7 +1456,7 @@
             <!-- Shorts Romance -->
             <a href="/static/items/shorts.html" class="all-items-card">
                 <div class="all-items-card-image">
-                    <img src="/static/images/summerBreeze/shorts/1.jpg" alt="Shorts Romance">
+                    <img src="/static/images/summerBreeze/shorts/1_card.webp" alt="Shorts Romance" loading="lazy">
                 </div>
                 <div class="all-items-card-info">
                     <span class="all-items-card-name">Shorts Romance</span>
@@ -1243,17 +1466,19 @@
             <!-- Completo Romance -->
             <a href="/static/items/completo-shorts-top.html" class="all-items-card">
                 <div class="all-items-card-image">
-                    <img src="/static/images/summerBreeze/completo_shorts_top/1.jpg" alt="Completo Romance">
+                    <img src="/static/images/summerBreeze/completo_shorts_top/1_card.webp" alt="Completo Romance"
+                        loading="lazy">
                 </div>
                 <div class="all-items-card-info">
                     <span class="all-items-card-name">Completo Romance</span>
-                    <span class="all-items-card-price">€130.00</span>
+                    <span class="all-items-card-price">€140.00</span>
                 </div>
             </a>
             <!-- Chemisier Provence  -->
             <a href="/static/items/abito-balza.html" class="all-items-card">
                 <div class="all-items-card-image">
-                    <img src="/static/images/summerBreeze/vestito_balza/1.jpg" alt="Chemisier Provence ">
+                    <img src="/static/images/summerBreeze/vestito_balza/1_card.webp" alt="Chemisier Provence "
+                        loading="lazy">
                 </div>
                 <div class="all-items-card-info">
                     <span class="all-items-card-name">Chemisier Provence </span>
@@ -1263,7 +1488,7 @@
             <!-- Gilet Natural -->
             <a href="/static/items/gilet.html" class="all-items-card">
                 <div class="all-items-card-image">
-                    <img src="/static/images/summerBreeze/gilet/1.jpg" alt="Gilet Natural">
+                    <img src="/static/images/summerBreeze/gilet/1_card.webp" alt="Gilet Natural" loading="lazy">
                 </div>
                 <div class="all-items-card-info">
                     <span class="all-items-card-name">Gilet Natural</span>
@@ -1273,7 +1498,8 @@
             <!-- Blusa Melograno -->
             <a href="/static/items/blusa.html" class="all-items-card">
                 <div class="all-items-card-image">
-                    <img src="/static/images/summerBreeze/camicetta_smanicata/1.jpg" alt="Blusa Melograno">
+                    <img src="/static/images/summerBreeze/camicetta_smanicata/1_card.webp" alt="Blusa Melograno"
+                        loading="lazy">
                 </div>
                 <div class="all-items-card-info">
                     <span class="all-items-card-name">Blusa Melograno</span>
@@ -1283,7 +1509,8 @@
             <!-- Gonna Melograno -->
             <a href="/static/items/gonna.html" class="all-items-card">
                 <div class="all-items-card-image">
-                    <img src="/static/images/summerBreeze/gonna_portafoglio/1.jpg" alt="Gonna Melograno">
+                    <img src="/static/images/summerBreeze/gonna_portafoglio/1_card.webp" alt="Gonna Melograno"
+                        loading="lazy">
                 </div>
                 <div class="all-items-card-info">
                     <span class="all-items-card-name">Gonna Melograno</span>
@@ -1293,7 +1520,8 @@
             <!-- Completo Melograno -->
             <a href="/static/items/completo-camicia-gonna.html" class="all-items-card">
                 <div class="all-items-card-image">
-                    <img src="/static/images/summerBreeze/completo_camicia_gonna/1.jpg" alt="Completo Melograno">
+                    <img src="/static/images/summerBreeze/completo_camicia_gonna/1_card.webp" alt="Completo Melograno"
+                        loading="lazy">
                 </div>
                 <div class="all-items-card-info">
                     <span class="all-items-card-name">Completo Melograno</span>
@@ -1303,7 +1531,8 @@
             <!-- Abito Candy  -->
             <a href="/static/items/abito-corto.html" class="all-items-card">
                 <div class="all-items-card-image">
-                    <img src="/static/images/summerBreeze/abito_corto_fiocco/1.jpg" alt="Abito Candy ">
+                    <img src="/static/images/summerBreeze/abito_corto_fiocco/1_card.webp" alt="Abito Candy "
+                        loading="lazy">
                 </div>
                 <div class="all-items-card-info">
                     <span class="all-items-card-name">Abito Candy </span>
@@ -1313,7 +1542,8 @@
             <!-- Abito Tropical  -->
             <a href="/static/items/abito-lungo-fiocco.html" class="all-items-card">
                 <div class="all-items-card-image">
-                    <img src="/static/images/summerBreeze/abito_lungo_fiocco/1.jpg" alt="Abito Tropical ">
+                    <img src="/static/images/summerBreeze/abito_lungo_fiocco/1_card.webp" alt="Abito Tropical "
+                        loading="lazy">
                 </div>
                 <div class="all-items-card-info">
                     <span class="all-items-card-name">Abito Tropical </span>
@@ -1323,7 +1553,7 @@
             <!-- Burford Blazer -->
             <a href="/static/items/burford-blazer.html" class="all-items-card">
                 <div class="all-items-card-image">
-                    <img src="/static/images/burfordBlazer/MG_233.jpg" alt="Burford Blazer">
+                    <img src="/static/images/burfordBlazer/MG_233_card.webp" alt="Burford Blazer" loading="lazy">
                 </div>
                 <div class="all-items-card-info">
                     <span class="all-items-card-name">Burford Blazer</span>
@@ -1333,7 +1563,7 @@
             <!-- Ebrington Blouse -->
             <a href="/static/items/ebrington-blouse.html" class="all-items-card">
                 <div class="all-items-card-image">
-                    <img src="/static/images/ebringtonBlouse/MG_452.jpg" alt="Ebrington Blouse">
+                    <img src="/static/images/ebringtonBlouse/MG_452_card.webp" alt="Ebrington Blouse" loading="lazy">
                 </div>
                 <div class="all-items-card-info">
                     <span class="all-items-card-name">Ebrington Blouse</span>
@@ -1343,7 +1573,7 @@
             <!-- Clovelly Skirt -->
             <a href="/static/items/clovelly-skirt.html" class="all-items-card">
                 <div class="all-items-card-image">
-                    <img src="/static/images/clovellySkirt/MG_401.jpg" alt="Clovelly Skirt">
+                    <img src="/static/images/clovellySkirt/MG_401_card.webp" alt="Clovelly Skirt" loading="lazy">
                 </div>
                 <div class="all-items-card-info">
                     <span class="all-items-card-name">Clovelly Skirt</span>
@@ -1353,7 +1583,7 @@
             <!-- Kilnsey Dress -->
             <a href="/static/items/kilnsey-dress.html" class="all-items-card">
                 <div class="all-items-card-image">
-                    <img src="/static/images/kilnseyDress/MG_76.jpg" alt="Kilnsey Dress">
+                    <img src="/static/images/kilnseyDress/MG_76_card.webp" alt="Kilnsey Dress" loading="lazy">
                 </div>
                 <div class="all-items-card-info">
                     <span class="all-items-card-name">Kilnsey Dress</span>
@@ -1363,7 +1593,7 @@
             <!-- Grassington Belt -->
             <a href="/static/items/grassington-belt.html" class="all-items-card">
                 <div class="all-items-card-image">
-                    <img src="/static/images/grassingtonBelt/MG_128.jpg" alt="Grassington Belt">
+                    <img src="/static/images/grassingtonBelt/MG_128_card.webp" alt="Grassington Belt" loading="lazy">
                 </div>
                 <div class="all-items-card-info">
                     <span class="all-items-card-name">Grassington Belt</span>
@@ -1373,7 +1603,7 @@
             <!-- Stanton Cape -->
             <a href="/static/items/stanton-cape.html" class="all-items-card">
                 <div class="all-items-card-image">
-                    <img src="/static/images/stantonCape/MG_299.jpg" alt="Stanton Cape">
+                    <img src="/static/images/stantonCape/MG_299_card.webp" alt="Stanton Cape" loading="lazy">
                 </div>
                 <div class="all-items-card-info">
                     <span class="all-items-card-name">Stanton Cape</span>
@@ -1383,7 +1613,8 @@
             <!-- Harshy Shirt Jacket -->
             <a href="/static/items/harshy-shirt-jacket.html" class="all-items-card">
                 <div class="all-items-card-image">
-                    <img src="/static/images/harshyShirtJacket/MG_001.jpeg" alt="Harshy Shirt Jacket">
+                    <img src="/static/images/harshyShirtJacket/MG_001_card.webp" alt="Harshy Shirt Jacket"
+                        loading="lazy">
                 </div>
                 <div class="all-items-card-info">
                     <span class="all-items-card-name">Harshy Shirt Jacket</span>
@@ -1394,7 +1625,7 @@
     </section>
 
     <!-- Philosophy Section -->
-    <section class="philosophy-section">
+    <section class="philosophy-section" id="moreAboutSection">
         <div class="philosophy-content">
             <div class="philosophy-text">
                 <h3>More about</h3>
@@ -1407,7 +1638,7 @@
                     grata.</p>
             </div>
             <div id="img1" class="philosophy-image">
-                <img src="/static/images/outsideTheCottage/board.jpeg" alt="Craftsmanship">
+                <img src="/static/images/outsideTheCottage/board.webp" alt="Craftsmanship">
             </div>
         </div>
     </section>
@@ -1416,7 +1647,7 @@
     <section class="philosophy-section">
         <div class="philosophy-content">
             <div id="img2" class="philosophy-image">
-                <img src="/static/images/outsideTheCottage/stoffe.png" alt="Sewing Process">
+                <img src="/static/images/outsideTheCottage/stoffe.webp" alt="Sewing Process">
             </div>
             <div class="philosophy-text">
                 <!-- <h3>Sostenibilità e Personalizzazione</h3> -->
@@ -1441,7 +1672,7 @@
         </div>
     </section> -->
 
-    <footer class="contact-footer">
+    <footer class="contact-footer" id="contactFooter">
         <div class="footer-header">
             <h3>Per ordini e ulteriori informazioni:</h3>
         </div>
@@ -1490,6 +1721,101 @@
                 }
             }
         }
+
+        // ==========================================
+        // HAMBURGER MENU INTERACTIVITY
+        // ==========================================
+        const menuBtn = document.getElementById('menuBtn');
+        const menuPanel = document.getElementById('menuPanel');
+        const menuBackdrop = document.getElementById('menuBackdrop');
+        const donnaToggle = document.getElementById('donnaToggle');
+        const donnaSubLinks = document.getElementById('donnaSubLinks');
+
+        function toggleMenu() {
+            const isOpen = menuPanel.classList.toggle('open');
+            menuBtn.classList.toggle('open');
+            menuBackdrop.classList.toggle('open');
+            document.body.classList.toggle('menu-overlay-active', isOpen);
+            menuBtn.setAttribute('aria-expanded', isOpen);
+        }
+
+        menuBtn.addEventListener('click', toggleMenu);
+        menuBackdrop.addEventListener('click', toggleMenu);
+
+        // Donna Accordion Sub-Menu toggle
+        donnaToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            donnaToggle.classList.toggle('active');
+            donnaSubLinks.classList.toggle('open');
+        });
+
+        // Auto-close menu drawer when clicking on in-page scroll links
+        const scrollLinks = document.querySelectorAll('.scroll-link');
+        scrollLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (menuPanel.classList.contains('open')) {
+                    toggleMenu();
+                }
+            });
+        });
+
+        // Toast alert for Uomo "Coming Soon" link
+        function showComingSoonAlert(e) {
+            e.preventDefault();
+
+            let toast = document.querySelector('.coming-soon-toast');
+            if (!toast) {
+                toast = document.createElement('div');
+                toast.className = 'coming-soon-toast';
+                toast.textContent = 'Collezione Uomo in arrivo prossimamente';
+                document.body.appendChild(toast);
+            }
+
+            // Trigger transition
+            setTimeout(() => {
+                toast.classList.add('show');
+            }, 50);
+
+            // Auto hide toast after 3 seconds
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // ==========================================
+        // SEAMLESS HD HERO VIDEO PRELOAD & SWITCH
+        // ==========================================
+        window.addEventListener('load', () => {
+            const lowVideo = document.getElementById('heroVideoLow');
+            const highVideo = document.getElementById('heroVideoHigh');
+
+            if (lowVideo && highVideo) {
+                // Set the source of the high-res video to trigger background loading
+                highVideo.src = '/static/videos/REEL 1-MISTO_1080p.mp4';
+                highVideo.load();
+
+                highVideo.addEventListener('canplaythrough', () => {
+                    // Sync current playback time of HD video to SD video
+                    highVideo.currentTime = lowVideo.currentTime;
+
+                    // Start playing HD video
+                    highVideo.play().then(() => {
+                        // Fade in the HD video
+                        highVideo.style.opacity = '1';
+
+                        setTimeout(() => {
+                            // Pause and clean up low-res video after transition
+                            lowVideo.pause();
+                            lowVideo.removeAttribute('src');
+                            lowVideo.load();
+                            lowVideo.remove(); // Safely remove from DOM to release resources
+                        }, 500);
+                    }).catch(err => {
+                        console.log("HD video play failed or was interrupted: ", err);
+                    });
+                }, { once: true });
+            }
+        });
     </script>
 </body>
 

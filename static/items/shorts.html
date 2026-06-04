@@ -2,9 +2,9 @@
 <html lang="en">
 
 <head>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Libre+Bodoni:ital,wght@0,400..700;1,400..700&display=swap"
-        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Libre+Bodoni:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shorts Romance - Ottavia Dara Collections</title>
@@ -26,20 +26,8 @@
             overflow-x: hidden;
         }
 
-        
-        }
-
-        
-
-        @media (min-width: 768px) {
-            
-        }
-
         .back-link:hover {
             opacity: 0.6;
-        }
-
-        
         }
 
         .item-content {
@@ -73,23 +61,27 @@
         .main-image-container {
             position: relative;
             width: 100%;
-            height: 500px;
+            aspect-ratio: 3 / 4;
+            height: auto;
+            max-height: 65vh;
             background: white;
             margin-bottom: 1rem;
             overflow: hidden;
             border-radius: 4px;
             box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            margin-left: auto;
+            margin-right: auto;
         }
 
         @media (min-width: 768px) {
             .main-image-container {
-                height: 650px;
+                max-height: 70vh;
             }
         }
 
         @media (min-width: 1024px) {
             .main-image-container {
-                height: 750px;
+                max-height: 580px;
             }
         }
 
@@ -98,6 +90,12 @@
             height: 100%;
             object-fit: cover;
             transition: transform 0.1s ease-out;
+            user-drag: none;
+            -webkit-user-drag: none;
+            user-select: none;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
         }
 
         @media (min-width: 1024px) {
@@ -121,18 +119,6 @@
         @media (min-width: 768px) {
             .gallery-nav {
                 padding: 0 1rem;
-            }
-        }
-
-        .main-image-container:hover .gallery-nav {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        @media (max-width: 1023px) {
-            .main-image-container:hover .gallery-nav {
-                opacity: 1;
-                pointer-events: auto;
             }
         }
 
@@ -369,37 +355,6 @@
             }
         }
 
-        /* Swipe hint for mobile */
-        .swipe-hint {
-            text-align: center;
-            font-size: 0.75rem;
-            color: #78716c;
-            margin-top: 0.75rem;
-            letter-spacing: 0.05em;
-        }
-
-        @media (min-width: 768px) {
-            .swipe-hint {
-                display: none;
-            }
-        }
-
-        /* Zoom hint for desktop */
-        .zoom-hint {
-            display: none;
-            text-align: center;
-            font-size: 0.75rem;
-            color: #78716c;
-            margin-top: 0.75rem;
-            letter-spacing: 0.05em;
-        }
-
-        @media (min-width: 1024px) {
-            .zoom-hint {
-                display: block;
-            }
-        }
-
         /* Contact Footer */
         .contact-footer {
             background: #1c1917;
@@ -511,7 +466,7 @@
             color: rgba(255, 255, 255, 0.6);
             letter-spacing: 0.05em;
         }
-    
+
         /* WhatsApp Button */
         .info-btn {
             display: inline-flex;
@@ -582,12 +537,6 @@
             z-index: 110;
         }
 
-        
-
-        
-
-        
-
         /* Item Detail spacious padding */
         .item-detail {
             max-width: 90rem;
@@ -600,16 +549,6 @@
                 padding: 7.5rem 2rem 3rem;
             }
         }
-
-
-        
-
-        
-
-        @media (min-width: 768px) {
-            
-        }
-
 
         .nav-brand {
             text-align: center;
@@ -650,8 +589,7 @@
                 letter-spacing: 0.2em !important;
             }
         }
-
-</style>
+    </style>
 </head>
 
 <body>
@@ -670,18 +608,16 @@
             <!-- Gallery -->
             <div class="gallery">
                 <div class="main-image-container" id="imageContainer">
-                    <img id="mainImage" class="main-image" src="" alt="Shorts Romance">
+                    <img id="mainImage" class="main-image" src="" alt="Shorts Romance" draggable="false">
                     <div class="gallery-nav">
                         <button class="gallery-btn" onclick="previousImage()" aria-label="Previous image">
                             <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M15 19l-7-7 7-7"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
                             </svg>
                         </button>
                         <button class="gallery-btn" onclick="nextImage()" aria-label="Next image">
                             <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
-                                </path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                             </svg>
                         </button>
                     </div>
@@ -756,10 +692,10 @@
         const config = {
             imageFolderPath: '/static/images/summerBreeze/shorts/',
             imageFiles: [
-                '1.jpg',
-                '2.jpg',
-                '3.jpg',
-                '4.jpg'
+                '1.webp',
+                '2.webp',
+                '3.webp',
+                '4.webp'
             ],
             mainImageIndex: 0
         };
@@ -826,53 +762,6 @@
         const imageContainer = document.getElementById('imageContainer');
         const mainImage = document.getElementById('mainImage');
 
-        if (isDesktop) {
-            imageContainer.addEventListener('mouseenter', () => {
-                mainImage.classList.add('zoom-enabled');
-            });
-
-            imageContainer.addEventListener('mousemove', (e) => {
-                if (!mainImage.classList.contains('zoom-enabled')) return;
-
-                const rect = imageContainer.getBoundingClientRect();
-                const x = ((e.clientX - rect.left) / rect.width) * 100;
-                const y = ((e.clientY - rect.top) / rect.height) * 100;
-
-                mainImage.style.transformOrigin = `${x}% ${y}%`;
-                mainImage.style.transform = 'scale(1.3)';
-            });
-
-            imageContainer.addEventListener('mouseleave', () => {
-                mainImage.classList.remove('zoom-enabled');
-                mainImage.style.transform = 'scale(1)';
-            });
-        }
-
-        let touchStartX = 0;
-        let touchEndX = 0;
-
-        imageContainer.addEventListener('touchstart', (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-        });
-
-        imageContainer.addEventListener('touchend', (e) => {
-            touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
-        });
-
-        function handleSwipe() {
-            const swipeThreshold = 50;
-            const diff = touchStartX - touchEndX;
-
-            if (Math.abs(diff) > swipeThreshold) {
-                if (diff > 0) {
-                    nextImage();
-                } else {
-                    previousImage();
-                }
-            }
-        }
-
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowLeft') {
                 previousImage();
@@ -882,13 +771,7 @@
         });
 
         window.addEventListener('resize', () => {
-            const wasDesktop = isDesktop;
             isDesktop = window.innerWidth >= 1024;
-
-            if (wasDesktop && !isDesktop) {
-                mainImage.classList.remove('zoom-enabled');
-                mainImage.style.transform = 'scale(1)';
-            }
         });
 
         function goBack(event) {
