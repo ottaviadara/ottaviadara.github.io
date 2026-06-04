@@ -122,10 +122,6 @@
             transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .item-card:hover {
-            transform: translateY(-8px);
-        }
-
         .item-image-container {
             width: 100%;
             height: auto;
@@ -154,10 +150,6 @@
             transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .item-card:hover .item-image {
-            transform: scale(1.05);
-        }
-
         #belt-image {
             width: 200%;
             height: 200%;
@@ -168,8 +160,16 @@
             transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .item-card:hover #belt-image {
-            transform: translate(-50%, -50%) scale(1.05);
+        @media (hover: hover) {
+            .item-card:hover {
+                transform: translateY(-8px);
+            }
+            .item-card:hover .item-image {
+                transform: scale(1.05);
+            }
+            .item-card:hover #belt-image {
+                transform: translate(-50%, -50%) scale(1.05);
+            }
         }
 
         .item-overlay {
